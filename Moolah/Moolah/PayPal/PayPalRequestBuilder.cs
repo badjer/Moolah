@@ -59,6 +59,8 @@ namespace Moolah.PayPal
             // SetExpressCheckout specific
             addOptionalValueToRequest("ALLOWNOTE", orderDetails.AllowNote, request);
             addOptionalValueToRequest("BUYEREMAILOPTINENABLE", orderDetails.EnableCustomerMarketingEmailOptIn, request);
+            addOptionalValueToRequest("SOLUTIONTYPE", orderDetails.SolutionType.ToString(), request);
+            addOptionalValueToRequest("LANDINGPAGE", orderDetails.LandingPage.ToString(), request);
 
             return request;
         }

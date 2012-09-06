@@ -61,6 +61,18 @@ namespace Moolah.PayPal
         /// </summary>
         public bool? EnableCustomerMarketingEmailOptIn { get; set; }
         /// <summary>
+        /// Sets whether Paypal is the only method of payment.
+        /// If this is set to Sole, and LandingPage is set to Billing, then you don't
+        /// have to login to Paypal to make a payment with Express Checkout - you can pay directly with your credit card
+        /// </summary>
+        public SolutionType? SolutionType { get; set; }
+        /// <summary>
+        /// What page at Paypal to start at when using Express Checkout.
+        /// If this is set to Billing, and SolutionType is set to Sole, then you don't need
+        /// to login to Paypal to make a payment with Express Checkout - you can pay directly with your credit card
+        /// </summary>
+        public LandingPage? LandingPage { get; set; }
+        /// <summary>
         /// A free-form field for your own use. The value you specify is available only if the transaction includes a purchase.
         /// This field is ignored if you set up a billing agreement for a recurring payment that is not immediately charged.
         /// Character length and limitations: 256 single-byte alphanumeric characters

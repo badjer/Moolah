@@ -72,6 +72,16 @@ namespace Moolah.PayPal
         /// to login to Paypal to make a payment with Express Checkout - you can pay directly with your credit card
         /// </summary>
         public LandingPage? LandingPage { get; set; }
+
+        public string ShipToName { get; set; }
+        public string ShipToStreet { get; set; }
+        public string ShipToCity { get; set; }
+        public string ShipToState { get; set; }
+        public string ShipToZip { get; set; }
+        public string ShipToCountryCode { get; set; }
+        public string Email { get; set; }
+        public string ShipToPhoneNum { get; set; }
+
         /// <summary>
         /// A free-form field for your own use. The value you specify is available only if the transaction includes a purchase.
         /// This field is ignored if you set up a billing agreement for a recurring payment that is not immediately charged.

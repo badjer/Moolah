@@ -73,6 +73,28 @@ namespace Moolah.PayPal
             addOptionalValueToRequest("PAYMENTREQUEST_0_CUSTOM", orderDetails.CustomField, request);
             addOptionalValueToRequest("PAYMENTREQUEST_0_DESC", orderDetails.OrderDescription, request);
 
+            // Add payer information
+            addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTONAME", orderDetails.ShipToName, request);
+            addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOSTREET", orderDetails.ShipToStreet, request);
+            addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOCITY", orderDetails.ShipToCity, request);
+            addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOSTATE", orderDetails.ShipToState, request);
+            addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE", orderDetails.ShipToCountryCode, request);
+            addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOZIP", orderDetails.ShipToZip, request);
+            // This one isn't documented in all places
+            addOptionalValueToRequest("PAYMENTREQUEST_0_EMAIL", orderDetails.Email, request);
+            addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOPHONENUM", orderDetails.ShipToPhoneNum, request);
+            
+            // These are supposed to be deprecated in favor of the above, but my sandbox was ignoring the above
+            addOptionalValueToRequest("SHIPTONAME", orderDetails.ShipToName, request);
+            addOptionalValueToRequest("SHIPTOSTREET", orderDetails.ShipToStreet, request);
+            addOptionalValueToRequest("SHIPTOCITY", orderDetails.ShipToCity, request);
+            addOptionalValueToRequest("SHIPTOSTATE", orderDetails.ShipToState, request);
+            addOptionalValueToRequest("SHIPTOCOUNTRYCODE", orderDetails.ShipToCountryCode, request);
+            addOptionalValueToRequest("SHIPTOZIP", orderDetails.ShipToZip, request);
+            // This one isn't documented
+            addOptionalValueToRequest("EMAIL", orderDetails.Email, request);
+            addOptionalValueToRequest("SHIPTOPHONENUM", orderDetails.ShipToPhoneNum, request);
+
             var lineNumber = 0;
             var itemTotal = 0m;
             if (orderDetails.Items != null)

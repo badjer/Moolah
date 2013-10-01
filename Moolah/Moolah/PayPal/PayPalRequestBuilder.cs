@@ -65,6 +65,13 @@ namespace Moolah.PayPal
             return request;
         }
 
+        void addOptionalValueToRequest(string field, string value, NameValueCollection request, string defaultVal)
+        {
+            addOptionalValueToRequest(field, value, request);
+            if (request[field] == null)
+                request[field] = defaultVal;
+        }
+
         void addOrderDetailsValues(OrderDetails orderDetails, NameValueCollection request)
         {
             addOptionalValueToRequest("PAYMENTREQUEST_0_TAXAMT", orderDetails.TaxTotal, request);
@@ -73,7 +80,10 @@ namespace Moolah.PayPal
             addOptionalValueToRequest("PAYMENTREQUEST_0_CUSTOM", orderDetails.CustomField, request);
             addOptionalValueToRequest("PAYMENTREQUEST_0_DESC", orderDetails.OrderDescription, request);
 
+            addOptionalValueToRequest("REQCONFIRMSHIPPING", orderDetails.ReqConfirmShipping, request);
+
             // Add payer information
+            addOptionalValueToRequest("NOSHIPPING", (int?)orderDetails.NoShipping, request);
             addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTONAME", orderDetails.ShipToName, request);
             addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOSTREET", orderDetails.ShipToStreet, request);
             addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOCITY", orderDetails.ShipToCity, request);
@@ -85,6 +95,7 @@ namespace Moolah.PayPal
             addOptionalValueToRequest("PAYMENTREQUEST_0_SHIPTOPHONENUM", orderDetails.ShipToPhoneNum, request);
             
             // These are supposed to be deprecated in favor of the above, but my sandbox was ignoring the above
+            addOptionalValueToRequest("NO_SHIPPING", (int?)orderDetails.NoShipping, request);
             addOptionalValueToRequest("SHIPTONAME", orderDetails.ShipToName, request);
             addOptionalValueToRequest("SHIPTOSTREET", orderDetails.ShipToStreet, request);
             addOptionalValueToRequest("SHIPTOCITY", orderDetails.ShipToCity, request);

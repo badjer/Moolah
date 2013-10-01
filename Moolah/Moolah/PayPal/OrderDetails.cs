@@ -73,6 +73,9 @@ namespace Moolah.PayPal
         /// </summary>
         public LandingPage? LandingPage { get; set; }
 
+        public ShippingAddressType? NoShipping { get; set; }
+        public bool? ReqConfirmShipping { get; set; }
+
         public string ShipToName { get; set; }
         public string ShipToStreet { get; set; }
         public string ShipToCity { get; set; }
